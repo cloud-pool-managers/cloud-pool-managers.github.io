@@ -1,0 +1,5 @@
+baseURL = "https://cloud-pool-managers.github.io/"
+title = "Cloud Pool Manager"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+[markup.goldmark.renderer]
+  unsafe = true

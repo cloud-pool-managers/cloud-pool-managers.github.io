@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloud Pool Manager — on-demand pools of teaching VMs</title>
+<meta name="description" content="Cloud Pool Manager provisions and manages pools of teaching virtual machines on OpenStack — students open JupyterLab, VS Code or a terminal straight from the browser, authenticated by Moodle, GitHub or SSH. nbgrader grading, real-time collaboration, observability. Built at École polytechnique — IDCS.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --navy:#0E2A47; --navy2:#091e33; --blue:#1F6FEB; --blue2:#5B9BFF;
+    --bg:#ffffff; --fg:#15212e; --muted:#566678; --card:#f5f8fc; --border:#dde6f1;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0a1422; --fg:#e7eef7; --muted:#9fb0c4; --card:#0f1f33; --border:#1e3a5f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  /* hero */
+  header{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:84px 0 72px;text-align:center;border-bottom:6px solid var(--blue)}
+  header img{width:104px;height:104px;margin-bottom:18px}
+  header h1{font-size:3rem;margin:.1em 0 .15em;letter-spacing:-.02em;font-weight:800}
+  header .tag{font-size:1.28rem;color:#cfe0f5;max-width:680px;margin:0 auto 6px}
+  header .sub{font-size:1rem;color:#9fc2f0;max-width:640px;margin:10px auto 0}
+  .btns{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:12px;font-weight:700;font-size:1rem;display:inline-block}
+  .btn-primary{background:var(--blue);color:#fff} .btn-primary:hover{background:#1a5fd0;text-decoration:none}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25)} .btn-ghost:hover{background:rgba(255,255,255,.16);text-decoration:none}
+  .pills{margin-top:30px;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+  .pill{font-size:.82rem;color:#cfe0f5;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 13px}
+  /* sections */
+  section{padding:58px 0}
+  h2{font-size:1.7rem;letter-spacing:-.01em;margin:0 0 6px;text-align:center}
+  .lead{color:var(--muted);text-align:center;max-width:640px;margin:0 auto 36px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px 24px}
+  .card h3{margin:0 0 8px;font-size:1.12rem} .card p{margin:0;color:var(--muted);font-size:.97rem}
+  .card .ic{width:38px;height:38px;border-radius:10px;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;margin-bottom:14px}
+  pre{background:var(--navy);color:#dbe7f7;border-radius:14px;padding:22px;overflow:auto;font-size:.86rem;line-height:1.5;max-width:760px;margin:0 auto}
+  .flow{text-align:center;color:var(--muted);margin-top:14px;font-size:.92rem}
+  footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;color:var(--muted);font-size:.92rem}
+  footer a{font-weight:600}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <img src="/logo.svg" alt="Cloud Pool Manager">
+    <h1>Cloud Pool Manager</h1>
+    <p class="tag">On-demand pools of teaching virtual machines — in the browser, with zero install.</p>
+    <p class="sub">A teacher creates a pool for a course; the platform provisions a fleet of identical VMs on OpenStack; each student opens JupyterLab, VS&nbsp;Code or a terminal straight from their browser.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="/docs/">Documentation</a>
+      <a class="btn btn-ghost" href="https://github.com/cloud-pool-managers/vm-pool-managers">Source code</a>
+    </div>
+    <div class="pills">
+      <span class="pill">OpenStack</span><span class="pill">JupyterLab</span><span class="pill">VS&nbsp;Code</span>
+      <span class="pill">nbgrader</span><span class="pill">Moodle</span><span class="pill">real-time</span><span class="pill">Go · SvelteKit</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="lead">From a teacher's one click to a whole class working in the browser — in minutes, not hours.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">▦</div><h3>Pools of VMs by course</h3><p>One action provisions <em>N</em> identical machines from a golden image. Asynchronous job queue and a desired-vs-real reconciliation loop — self-healing, with pool pre-warming.</p></div>
+      <div class="card"><div class="ic">🖥</div><h3>Browser access, no install</h3><p>Per-student JupyterLab, VS&nbsp;Code (code-server) and a Guacamole terminal, reverse-proxied over HTTPS. The VMs are never exposed directly.</p></div>
+      <div class="card"><div class="ic">🔑</div><h3>Identity &amp; enrolment</h3><p>OIDC (Dex/GLAuth), GitHub OAuth, SSH keys, and Moodle / “cours de l'X” course import — the student roster is pulled automatically.</p></div>
+      <div class="card"><div class="ic">✓</div><h3>Grading with nbgrader</h3><p>Distribute, collect and auto-grade assignments, then push marks back to Moodle.</p></div>
+      <div class="card"><div class="ic">⇄</div><h3>Real-time collaboration</h3><p>Live co-editing of a shared session (JupyterLab RTC) brokered on a dedicated VM, plus password-based VS&nbsp;Code sharing between students.</p></div>
+      <div class="card"><div class="ic">📈</div><h3>Operable &amp; secure</h3><p>Prometheus, Loki, Grafana and OpenTelemetry. Every API route authenticated with role checks, server-side identity and input validation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--card)">
+  <div class="wrap">
+    <h2>Architecture</h2>
+    <p class="lead">Three tiers, gRPC throughout; a Caddy reverse proxy fronts HTTPS, gRPC-Web and the app proxies.</p>
+<pre>
+SvelteKit frontend  ──gRPC-Web──▶  Control Center (Go)  ──gRPC──▶  OpenStack microservice (Go)
+                                         │                                  │
+                                  PostgreSQL  (state,                  OpenStack API
+                                   LISTEN/NOTIFY → live UI)            (gophercloud)
+</pre>
+    <p class="flow">Real-time pool &amp; VM state streamed to the UI via PostgreSQL <code>LISTEN/NOTIFY</code> — no refresh.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Built at <strong>École polytechnique — IDCS</strong> ·
+    <a href="https://github.com/cloud-pool-managers">GitHub</a> ·
+    <a href="/docs/">Docs</a> ·
+    <a href="https://github.com/cloud-pool-managers/vm-pool-managers">Source</a>
+  </div>
+</footer>
+</body>
+</html>
