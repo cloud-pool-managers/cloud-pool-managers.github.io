@@ -27,6 +27,7 @@
   header .sub{font-size:1rem;color:#9fc2f0;max-width:640px;margin:10px auto 0}
   .btns{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
   .btn{padding:13px 26px;border-radius:12px;font-weight:700;font-size:1rem;display:inline-block}
+  .btn .icon{display:inline-block;vertical-align:-0.15em;margin-right:.45em}
   .btn-primary{background:var(--blue);color:#fff} .btn-primary:hover{background:#1a5fd0;text-decoration:none}
   .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.25)} .btn-ghost:hover{background:rgba(255,255,255,.16);text-decoration:none}
   .pills{margin-top:30px;display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
@@ -53,8 +54,8 @@
     <p class="tag">On-demand pools of teaching virtual machines — in the browser, with zero install.</p>
     <p class="sub">A teacher creates a pool for a course; the platform provisions a fleet of identical VMs on OpenStack; each student opens JupyterLab, VS&nbsp;Code or a terminal straight from their browser.</p>
     <div class="btns">
-      <a class="btn btn-primary" href="/docs/">Documentation</a>
-      <a class="btn btn-ghost" href="https://github.com/cloud-pool-managers/vm-pool-managers">Source code</a>
+      <a class="btn btn-primary" href="/docs/">{{ partial "icons/book.html" . }}Documentation</a>
+      <a class="btn btn-ghost" href="https://github.com/cloud-pool-managers/vm-pool-managers">{{ partial "icons/mark-github.html" . }}Source code</a>
     </div>
     <div class="pills">
       <span class="pill">OpenStack</span><span class="pill">JupyterLab</span><span class="pill">VS&nbsp;Code</span>
